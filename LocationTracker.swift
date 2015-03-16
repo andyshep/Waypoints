@@ -9,22 +9,39 @@
 import Foundation
 import CoreLocation
 
-public typealias Observer = (location: LocationResult) -> ()
-
+/**
+    The LocationTracker class defines a mechanism for determining the current location and observing location changes.
+*/
 public class LocationTracker: NSObject, CLLocationManagerDelegate {
+    
+    /// An alias for the location change observer type.
+    public typealias Observer = (location: LocationResult) -> ()
     
     private var lastResult: LocationResult = .Failure(.UnknownLocation)
     private var observers: [Observer] = []
     private let threshold: Double
     
+    /// A `LocationResult` representing the current location.
     var currentLocation: LocationResult {
         return self.lastResult
     }
     
+    /**
+        Initializes a new LocationTracker with the default minimum distance threshold of 0 meters.
+    
+        :returns: LocationTracker with the default minimum distance threshold of 0 meters.
+    */
     convenience override init() {
         self.init(threshold: 0.0)
     }
     
+    /**
+        Initializes a new LocationTracker with the specified minimum distance threshold.
+    
+        :param: threshold The minimum distance change in meters before a new location is published.
+    
+        :returns: LocationTracker with the specified minimum distance threshold.
+    */
     init(threshold: Double) {
         self.threshold = threshold
         super.init()
@@ -34,6 +51,11 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     
     // MARK: - Public
     
+    /**
+        Adds a location change observer to execute whenever the location significantly changes.
+    
+        :param: observer The callback function to execute when a location change occurs.
+    */
     func addLocationChangeObserver(observer: Observer) -> Void {
         observers.append(observer)
     }
@@ -111,16 +133,36 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     }
 }
 
+/**
+    Type representing either a Location or a Reason the location could not be determined.
+
+    - Success: A successful result with a valid Location.
+    - Failure: An unsuccessful result with a Reason for failure.
+*/
 public enum LocationResult {
     case Success(Location)
     case Failure(Reason)
 }
 
+/**
+    Type representing either an unknown location or an NSError describing why the location failed.
+
+    - UnknownLocation: The location is unknown because it has not been determined yet.
+    - Other: The NSError describing why the location could not be determined.
+*/
 public enum Reason {
     case UnknownLocation
     case Other(NSError)
 }
 
+/**
+    Location value representing a `CLLocation` and some local metadata.
+
+    - physical: A CLLocation object for the current location.
+    - city: The city the location is in.
+    - state: The state the location is in.
+    - neighborhood: The neighborhood the location is in.
+*/
 public struct Location: Equatable {
     let physical: CLLocation
     let city: String
