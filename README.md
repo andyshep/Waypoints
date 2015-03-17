@@ -5,11 +5,12 @@ Easy location tracking in Swift.
 
 * Add multiple observers for a single location change.
 * Configure the minimum distance before a new location is published.
+* Supports reverse geocoding.
 * Target iOS or OS X.
 
 ##Usage
 
-Create a `LocationTracker` instance with default minimum distance threshold of 0 meters:
+Create a `LocationTracker` instance with the default minimum distance threshold of 0 meters:
 
 	let locationTracker = LocationTracker()
 
@@ -30,7 +31,7 @@ locationTracker.addLocationChangeObserver { (result) -> () in
 }
 ```
 
-The location returned as a `LocationResult` type, representing either a `Location` or a `Reason` why the location could not be obtained. The `Location` type combines a `CLLocation` with metadata for the associated city, state, and neighborhood.
+The location is returned as a `LocationResult` type, representing either a `Location` or a `Reason` why the location could not be obtained.
 
 ```
 public enum LocationResult {
@@ -42,7 +43,11 @@ public enum Reason {
     case UnknownLocation
     case Other(NSError)
 }
+```
 
+The `Location` type combines a `CLLocation` with metadata for the associated city, state, and neighborhood. Address infomation is obstained using `CLGeocoder`.
+
+```
 public struct Location {
     let physical: CLLocation
     let city: String
@@ -52,6 +57,10 @@ public struct Location {
 ```
 
 See the `LocationTrackerExample` project for iOS and OS X demos.
+
+##Installation
+
+Clone the repo and copy `LocationTracker.swift` into your Xcode project.
 
 ##Configuration
 
@@ -69,4 +78,4 @@ If the location is always required.
 
 ## License
 
-The MIT License (MIT)
+The MIT License
