@@ -32,6 +32,50 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     }
     
     /**
+    Type representing either a Location or a Reason the location could not be determined.
+    
+    - Success: A successful result with a valid Location.
+    - Failure: An unsuccessful result with a Reason for failure.
+    */
+    public enum LocationResult {
+        case Success(Location)
+        case Failure(Reason)
+    }
+    
+    /**
+    Type representing either an unknown location or an NSError describing why the location failed.
+    
+    - UnknownLocation: The location is unknown because it has not been determined yet.
+    - Other: The NSError describing why the location could not be determined.
+    */
+    public enum Reason {
+        case UnknownLocation
+        case Other(NSError)
+    }
+    
+    /**
+    Location value representing a `CLLocation` and some local metadata.
+    
+    - physical: A CLLocation object for the current location.
+    - city: The city the location is in.
+    - state: The state the location is in.
+    - neighborhood: The neighborhood the location is in.
+    */
+    public struct Location: Equatable {
+        let physical: CLLocation
+        let city: String
+        let state: String
+        let neighborhood: String
+        
+        init(location physical: CLLocation, city: String, state: String, neighborhood: String) {
+            self.physical = physical
+            self.city = city
+            self.state = state
+            self.neighborhood = neighborhood
+        }
+    }
+    
+    /**
         Initializes a new LocationTracker with the default minimum distance threshold of 0 meters.
     
         :returns: LocationTracker with the default minimum distance threshold of 0 meters.
@@ -140,50 +184,6 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     }
 }
 
-/**
-    Type representing either a Location or a Reason the location could not be determined.
-
-    - Success: A successful result with a valid Location.
-    - Failure: An unsuccessful result with a Reason for failure.
-*/
-public enum LocationResult {
-    case Success(Location)
-    case Failure(Reason)
-}
-
-/**
-    Type representing either an unknown location or an NSError describing why the location failed.
-
-    - UnknownLocation: The location is unknown because it has not been determined yet.
-    - Other: The NSError describing why the location could not be determined.
-*/
-public enum Reason {
-    case UnknownLocation
-    case Other(NSError)
-}
-
-/**
-    Location value representing a `CLLocation` and some local metadata.
-
-    - physical: A CLLocation object for the current location.
-    - city: The city the location is in.
-    - state: The state the location is in.
-    - neighborhood: The neighborhood the location is in.
-*/
-public struct Location: Equatable {
-    let physical: CLLocation
-    let city: String
-    let state: String
-    let neighborhood: String
-    
-    init(location physical: CLLocation, city: String, state: String, neighborhood: String) {
-        self.physical = physical
-        self.city = city
-        self.state = state
-        self.neighborhood = neighborhood
-    }
-}
-
-public func ==(lhs: Location, rhs: Location) -> Bool {
+public func ==(lhs: LocationTracker.Location, rhs: LocationTracker.Location) -> Bool {
     return lhs.physical == rhs.physical
 }
