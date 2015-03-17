@@ -17,8 +17,13 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     /// An alias for the location change observer type.
     public typealias Observer = (location: LocationResult) -> ()
     
+    /// The last location result received. Initially the location is unknown.
     private var lastResult: LocationResult = .Failure(.UnknownLocation)
+    
+    /// The collection of location observers
     private var observers: [Observer] = []
+    
+    /// the minimum distance traveled before a location change is published.
     private let threshold: Double
     
     /// A `LocationResult` representing the current location.
@@ -85,16 +90,18 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
         if let currentLocation = locations.first as? CLLocation {
             if shouldUpdateWithLocation(currentLocation) {
                 CLGeocoder().reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) -> Void in
-                    if let placemark = placemarks?.first as? CLPlacemark,
-                        let city = placemark.locality,
-                        let state = placemark.administrativeArea,
-                        let neighborhood = placemark.subLocality {
-                            
-                            let location = Location(location: currentLocation, city: city, state: state, neighborhood: neighborhood)
-                            
-                            let result = LocationResult.Success(location)
-                            self.publishChangeWithResult(result)
-                            self.lastResult = result
+                    if let placemark = placemarks?.first as? CLPlacemark {
+                        if let city = placemark.locality {
+                            if let state = placemark.administrativeArea {
+                                if let neighborhood = placemark.subLocality {
+                                    let location = Location(location: currentLocation, city: city, state: state, neighborhood: neighborhood)
+                                    
+                                    let result = LocationResult.Success(location)
+                                    self.publishChangeWithResult(result)
+                                    self.lastResult = result
+                                }
+                            }
+                        }
                     }
                     else {
                         let result = LocationResult.Failure(Reason.Other(error))
