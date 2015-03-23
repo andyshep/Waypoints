@@ -80,7 +80,7 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     
         :returns: LocationTracker with the default minimum distance threshold of 0 meters.
     */
-    convenience override init() {
+    public convenience override init() {
         self.init(threshold: 0.0)
     }
     
@@ -91,7 +91,7 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     
         :returns: LocationTracker with the specified minimum distance threshold.
     */
-    init(threshold: Double) {
+    public init(threshold: Double) {
         self.threshold = threshold
         super.init()
         
@@ -105,7 +105,7 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     
         :param: observer The callback function to execute when a location change occurs.
     */
-    func addLocationChangeObserver(observer: Observer) -> Void {
+    public func addLocationChangeObserver(observer: Observer) -> Void {
         observers.append(observer)
     }
     
