@@ -1,4 +1,4 @@
-LocationTracker
+Waypoints
 ====
 
 Easy location tracking in Swift.
@@ -56,7 +56,7 @@ public struct Location {
 }
 ```
 
-See the `LocationTrackerExample` project for iOS and OS X demos.
+See the `Example` project for iOS and OS X demos.
 
 ##Installation
 

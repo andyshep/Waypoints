@@ -62,10 +62,10 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     - neighborhood: The neighborhood the location is in.
     */
     public struct Location: Equatable {
-        let physical: CLLocation
-        let city: String
-        let state: String
-        let neighborhood: String
+        public let physical: CLLocation
+        public let city: String
+        public let state: String
+        public let neighborhood: String
         
         init(location physical: CLLocation, city: String, state: String, neighborhood: String) {
             self.physical = physical
