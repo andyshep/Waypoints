@@ -370,7 +370,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = WaypointsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks  @loader_path/Frameworks @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -384,7 +384,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = WaypointsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks  @loader_path/Frameworks @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -408,6 +408,7 @@
 				F7222A401ACC45BE001F5FA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F7222A411ACC45BE001F5FA1 /* Build configuration list for PBXNativeTarget "WaypointsTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +417,7 @@
 				F7222A431ACC45BE001F5FA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
