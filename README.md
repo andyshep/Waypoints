@@ -1,4 +1,4 @@
-Waypoints
+Waypoints [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ====
 
 Easy location tracking in Swift.
@@ -10,7 +10,7 @@ Easy location tracking in Swift.
 
 ##Usage
 
-Create a `LocationTracker` instance with the default minimum distance threshold of 0 meters:
+Create a `LocationTracker` instance with the default minimum distance threshold of zero meters:
 
 	let locationTracker = LocationTracker()
 
@@ -45,7 +45,7 @@ public enum Reason {
 }
 ```
 
-The `Location` type combines a `CLLocation` with metadata for the associated city, state, and neighborhood. Address infomation is obstained using `CLGeocoder`.
+The `Location` type combines a `CLLocation` with metadata for the associated city, state, and neighborhood. Address infomation is obtained using `CLGeocoder`.
 
 ```
 public struct Location {
@@ -58,9 +58,18 @@ public struct Location {
 
 See the `Example` project for iOS and OS X demos.
 
+##Requirements
+
+* iOS 8.0 or Mac OS X 10.10
+* Xcode 6.3
+
 ##Installation
 
-Clone the repo and copy `LocationTracker.swift` into your Xcode project.
+To use Waypoints in your Xcode project via [Carthage](https://github.com/Carthage/Carthage), add the following to your `Cartfile`:
+
+    github "andyshep/Waypoints"
+
+Or clone the repo directly and copy `LocationTracker.swift` into your Xcode project.
 
 ##Configuration
 
