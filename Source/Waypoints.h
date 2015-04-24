@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Andrew Shepard. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for Waypoints-OSX.
 FOUNDATION_EXPORT double Waypoints_OSXVersionNumber;

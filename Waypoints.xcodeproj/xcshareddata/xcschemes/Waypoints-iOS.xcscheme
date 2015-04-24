@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F7BF40071AEAC56D00D5950B"
+               BlueprintIdentifier = "F7686A2F1AEAF44B00955C62"
                BuildableName = "Waypoints.framework"
                BlueprintName = "Waypoints-iOS"
                ReferencedContainer = "container:Waypoints.xcodeproj">
@@ -28,8 +28,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F7BF40111AEAC56D00D5950B"
-               BuildableName = "WaypointsTests.xctest"
+               BlueprintIdentifier = "F7686A391AEAF44B00955C62"
+               BuildableName = "Waypoints-iOSTests.xctest"
                BlueprintName = "Waypoints-iOSTests"
                ReferencedContainer = "container:Waypoints.xcodeproj">
             </BuildableReference>
@@ -46,8 +46,8 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F7BF40111AEAC56D00D5950B"
-               BuildableName = "WaypointsTests.xctest"
+               BlueprintIdentifier = "F7686A391AEAF44B00955C62"
+               BuildableName = "Waypoints-iOSTests.xctest"
                BlueprintName = "Waypoints-iOSTests"
                ReferencedContainer = "container:Waypoints.xcodeproj">
             </BuildableReference>
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F7BF40071AEAC56D00D5950B"
+            BlueprintIdentifier = "F7686A2F1AEAF44B00955C62"
             BuildableName = "Waypoints.framework"
             BlueprintName = "Waypoints-iOS"
             ReferencedContainer = "container:Waypoints.xcodeproj">
@@ -75,7 +75,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F7BF40071AEAC56D00D5950B"
+            BlueprintIdentifier = "F7686A2F1AEAF44B00955C62"
             BuildableName = "Waypoints.framework"
             BlueprintName = "Waypoints-iOS"
             ReferencedContainer = "container:Waypoints.xcodeproj">
@@ -93,7 +93,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F7BF40071AEAC56D00D5950B"
+            BlueprintIdentifier = "F7686A2F1AEAF44B00955C62"
             BuildableName = "Waypoints.framework"
             BlueprintName = "Waypoints-iOS"
             ReferencedContainer = "container:Waypoints.xcodeproj">

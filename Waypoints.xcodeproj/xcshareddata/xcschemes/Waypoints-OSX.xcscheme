@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F773B66E1AEAD22100E3A257"
+               BlueprintIdentifier = "F7686A0C1AEAF34800955C62"
                BuildableName = "Waypoints.framework"
                BlueprintName = "Waypoints-OSX"
-               ReferencedContainer = "container:Waypoints.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F773B64D1AEAD1D500E3A257"
-               BuildableName = "WaypointsTests.xctest"
-               BlueprintName = "WaypointsTests"
                ReferencedContainer = "container:Waypoints.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,26 +28,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F773B64D1AEAD1D500E3A257"
-               BuildableName = "WaypointsTests.xctest"
-               BlueprintName = "WaypointsTests"
-               ReferencedContainer = "container:Waypoints.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F773B66E1AEAD22100E3A257"
-            BuildableName = "Waypoints.framework"
-            BlueprintName = "Waypoints-OSX"
-            ReferencedContainer = "container:Waypoints.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -75,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F773B66E1AEAD22100E3A257"
+            BlueprintIdentifier = "F7686A0C1AEAF34800955C62"
             BuildableName = "Waypoints.framework"
             BlueprintName = "Waypoints-OSX"
             ReferencedContainer = "container:Waypoints.xcodeproj">
@@ -93,7 +60,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F773B66E1AEAD22100E3A257"
+            BlueprintIdentifier = "F7686A0C1AEAF34800955C62"
             BuildableName = "Waypoints.framework"
             BlueprintName = "Waypoints-OSX"
             ReferencedContainer = "container:Waypoints.xcodeproj">
