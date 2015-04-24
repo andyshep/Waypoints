@@ -1,15 +1,15 @@
 //
-//  Waypoints_iOSTests.swift
-//  Waypoints-iOSTests
+//  LocationTrackerTests.swift
+//  Waypoints
 //
 //  Created by Andrew Shepard on 4/24/15.
 //  Copyright (c) 2015 Andrew Shepard. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import XCTest
 
-class Waypoints_iOSTests: XCTestCase {
+class LocationTrackerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

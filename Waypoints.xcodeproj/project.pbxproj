@@ -13,6 +13,8 @@
 		F7686A3B1AEAF44B00955C62 /* Waypoints.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7686A301AEAF44B00955C62 /* Waypoints.framework */; };
 		F7686A4B1AEAF51D00955C62 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7686A071AEAF33400955C62 /* LocationTracker.swift */; };
 		F7686A4C1AEAF51D00955C62 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7686A071AEAF33400955C62 /* LocationTracker.swift */; };
+		F7F14E9F1AEAFD5D00AD7F76 /* LocationTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F14E9C1AEAFD2700AD7F76 /* LocationTrackerTests.swift */; };
+		F7F14EA01AEAFD6000AD7F76 /* LocationTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F14E9C1AEAFD2700AD7F76 /* LocationTrackerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,9 @@
 		F7686A301AEAF44B00955C62 /* Waypoints.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Waypoints.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7686A3A1AEAF44B00955C62 /* Waypoints-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Waypoints-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7686A491AEAF4C000955C62 /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		F7F14E991AEAFCAE00AD7F76 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		F7F14E9A1AEAFCAE00AD7F76 /* Info-OSX.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-OSX.plist"; sourceTree = "<group>"; };
+		F7F14E9C1AEAFD2700AD7F76 /* LocationTrackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrackerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				F7686A061AEAF33400955C62 /* Source */,
+				F7F14E981AEAFCAE00AD7F76 /* Tests */,
 				F7222A291ACC45BE001F5FA1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,6 +117,24 @@
 			children = (
 				F7686A491AEAF4C000955C62 /* Info-iOS.plist */,
 				F7686A271AEAF3C300955C62 /* Info-OSX.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F7F14E981AEAFCAE00AD7F76 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F7F14E9C1AEAFD2700AD7F76 /* LocationTrackerTests.swift */,
+				F7F14E9B1AEAFCDE00AD7F76 /* Supporting Files */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		F7F14E9B1AEAFCDE00AD7F76 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F7F14E991AEAFCAE00AD7F76 /* Info-iOS.plist */,
+				F7F14E9A1AEAFCAE00AD7F76 /* Info-OSX.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -296,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7F14E9F1AEAFD5D00AD7F76 /* LocationTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7F14EA01AEAFD6000AD7F76 /* LocationTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +503,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Waypoints-OSXTests/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info-OSX.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -493,7 +519,7 @@
 					"$(inherited)",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Waypoints-OSXTests/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info-OSX.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -562,7 +588,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Waypoints-iOSTests/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info-iOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -579,7 +605,7 @@
 					"$(inherited)",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Waypoints-iOSTests/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/Info-iOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
