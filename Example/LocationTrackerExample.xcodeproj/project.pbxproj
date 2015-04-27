@@ -11,10 +11,6 @@
 		F71143901AB7460700B37A5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F711438F1AB7460700B37A5F /* ViewController.swift */; };
 		F71143921AB7460700B37A5F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F71143911AB7460700B37A5F /* Images.xcassets */; };
 		F71143951AB7460700B37A5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71143931AB7460700B37A5F /* Main.storyboard */; };
-		F7222A9B1ACC6181001F5FA1 /* Waypoints.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7222A941ACC6152001F5FA1 /* Waypoints.framework */; };
-		F7222A9C1ACC6181001F5FA1 /* Waypoints.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7222A941ACC6152001F5FA1 /* Waypoints.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F7222AA01ACC6187001F5FA1 /* Waypoints.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7222A941ACC6152001F5FA1 /* Waypoints.framework */; };
-		F7222AA11ACC6187001F5FA1 /* Waypoints.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7222A941ACC6152001F5FA1 /* Waypoints.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F746658A1AB74DF200F3A2F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74665871AB74DF200F3A2F4 /* AppDelegate.swift */; };
 		F746658C1AB74DF200F3A2F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74665891AB74DF200F3A2F4 /* ViewController.swift */; };
 		F746658F1AB74E3F00F3A2F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F71143AB1AB7472000B37A5F /* Main.storyboard */; };
@@ -23,69 +19,57 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F7222A931ACC6152001F5FA1 /* PBXContainerItemProxy */ = {
+		F729EADB1AEDDEE700100BA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F7222A8E1ACC6152001F5FA1 /* Waypoints.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = F7222A281ACC45BE001F5FA1;
-			remoteInfo = Waypoints;
+			remoteGlobalIDString = F7686A0D1AEAF34800955C62;
+			remoteInfo = "Waypoints-OSX";
 		};
-		F7222A951ACC6152001F5FA1 /* PBXContainerItemProxy */ = {
+		F729EADD1AEDDEE700100BA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F7222A8E1ACC6152001F5FA1 /* Waypoints.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = F7222A331ACC45BE001F5FA1;
-			remoteInfo = WaypointsTests;
+			remoteGlobalIDString = F7686A171AEAF34800955C62;
+			remoteInfo = "Waypoints-OSXTests";
 		};
-		F7222A971ACC615B001F5FA1 /* PBXContainerItemProxy */ = {
+		F729EADF1AEDDEE700100BA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7222A8E1ACC6152001F5FA1 /* Waypoints.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F7686A301AEAF44B00955C62;
+			remoteInfo = "Waypoints-iOS";
+		};
+		F729EAE11AEDDEE700100BA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7222A8E1ACC6152001F5FA1 /* Waypoints.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F7686A3A1AEAF44B00955C62;
+			remoteInfo = "Waypoints-iOSTests";
+		};
+		F729EAEB1AEDDFFE00100BA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F7222A8E1ACC6152001F5FA1 /* Waypoints.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = F7222A271ACC45BE001F5FA1;
-			remoteInfo = Waypoints;
+			remoteGlobalIDString = F7686A2F1AEAF44B00955C62;
+			remoteInfo = "Waypoints-iOS";
 		};
-		F7222A991ACC615F001F5FA1 /* PBXContainerItemProxy */ = {
+		F729EAED1AEDE00400100BA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F7222A8E1ACC6152001F5FA1 /* Waypoints.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = F7222A271ACC45BE001F5FA1;
-			remoteInfo = Waypoints;
-		};
-		F7222A9D1ACC6181001F5FA1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F7222A8E1ACC6152001F5FA1 /* Waypoints.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F7222A271ACC45BE001F5FA1;
-			remoteInfo = Waypoints;
-		};
-		F7222AA21ACC6187001F5FA1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F7222A8E1ACC6152001F5FA1 /* Waypoints.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F7222A271ACC45BE001F5FA1;
-			remoteInfo = Waypoints;
+			remoteGlobalIDString = F7686A0C1AEAF34800955C62;
+			remoteInfo = "Waypoints-OSX";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F7222A9F1ACC6182001F5FA1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				F7222A9C1ACC6181001F5FA1 /* Waypoints.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F7222AA41ACC6187001F5FA1 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F7222AA11ACC6187001F5FA1 /* Waypoints.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,7 +98,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7222AA01ACC6187001F5FA1 /* Waypoints.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7222A9B1ACC6181001F5FA1 /* Waypoints.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,8 +134,10 @@
 		F7222A8F1ACC6152001F5FA1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F7222A941ACC6152001F5FA1 /* Waypoints.framework */,
-				F7222A961ACC6152001F5FA1 /* WaypointsTests.xctest */,
+				F729EADC1AEDDEE700100BA4 /* Waypoints.framework */,
+				F729EADE1AEDDEE700100BA4 /* Waypoints-OSXTests.xctest */,
+				F729EAE01AEDDEE700100BA4 /* Waypoints.framework */,
+				F729EAE21AEDDEE700100BA4 /* Waypoints-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,8 +198,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				F7222A9A1ACC615F001F5FA1 /* PBXTargetDependency */,
-				F7222AA31ACC6187001F5FA1 /* PBXTargetDependency */,
+				F729EAEE1AEDE00400100BA4 /* PBXTargetDependency */,
 			);
 			name = "LocationTracker-OSX";
 			productName = "LocationTracker-OSX";
@@ -229,13 +212,11 @@
 				F7C0CD741AB60AB4003A128F /* Sources */,
 				F7C0CD751AB60AB4003A128F /* Frameworks */,
 				F7C0CD761AB60AB4003A128F /* Resources */,
-				F7222A9F1ACC6182001F5FA1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F7222A981ACC615B001F5FA1 /* PBXTargetDependency */,
-				F7222A9E1ACC6181001F5FA1 /* PBXTargetDependency */,
+				F729EAEC1AEDDFFE00100BA4 /* PBXTargetDependency */,
 			);
 			name = "LocationTracker-iOS";
 			productName = LocationTrackerExample;
@@ -285,18 +266,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F7222A941ACC6152001F5FA1 /* Waypoints.framework */ = {
+		F729EADC1AEDDEE700100BA4 /* Waypoints.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Waypoints.framework;
-			remoteRef = F7222A931ACC6152001F5FA1 /* PBXContainerItemProxy */;
+			remoteRef = F729EADB1AEDDEE700100BA4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F7222A961ACC6152001F5FA1 /* WaypointsTests.xctest */ = {
+		F729EADE1AEDDEE700100BA4 /* Waypoints-OSXTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = WaypointsTests.xctest;
-			remoteRef = F7222A951ACC6152001F5FA1 /* PBXContainerItemProxy */;
+			path = "Waypoints-OSXTests.xctest";
+			remoteRef = F729EADD1AEDDEE700100BA4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F729EAE01AEDDEE700100BA4 /* Waypoints.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Waypoints.framework;
+			remoteRef = F729EADF1AEDDEE700100BA4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F729EAE21AEDDEE700100BA4 /* Waypoints-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Waypoints-iOSTests.xctest";
+			remoteRef = F729EAE11AEDDEE700100BA4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -345,25 +340,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F7222A981ACC615B001F5FA1 /* PBXTargetDependency */ = {
+		F729EAEC1AEDDFFE00100BA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Waypoints;
-			targetProxy = F7222A971ACC615B001F5FA1 /* PBXContainerItemProxy */;
+			name = "Waypoints-iOS";
+			targetProxy = F729EAEB1AEDDFFE00100BA4 /* PBXContainerItemProxy */;
 		};
-		F7222A9A1ACC615F001F5FA1 /* PBXTargetDependency */ = {
+		F729EAEE1AEDE00400100BA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Waypoints;
-			targetProxy = F7222A991ACC615F001F5FA1 /* PBXContainerItemProxy */;
-		};
-		F7222A9E1ACC6181001F5FA1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Waypoints;
-			targetProxy = F7222A9D1ACC6181001F5FA1 /* PBXContainerItemProxy */;
-		};
-		F7222AA31ACC6187001F5FA1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Waypoints;
-			targetProxy = F7222AA21ACC6187001F5FA1 /* PBXContainerItemProxy */;
+			name = "Waypoints-OSX";
+			targetProxy = F729EAED1AEDE00400100BA4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -517,7 +502,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "LocationTracker-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -529,7 +513,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "LocationTracker-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
