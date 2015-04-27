@@ -23,8 +23,11 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     /// The collection of location observers
     private var observers: [Observer] = []
     
-    /// the minimum distance traveled before a location change is published.
+    /// The minimum distance traveled before a location change is published.
     private let threshold: Double
+    
+    /// The internal location manager
+    private let locationManager: CLLocationManager
     
     /// A `LocationResult` representing the current location.
     var currentLocation: LocationResult {
@@ -91,9 +94,13 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     
         :returns: LocationTracker with the specified minimum distance threshold.
     */
-    public init(threshold: Double) {
+    public init(threshold: Double, locationManager:CLLocationManager = CLLocationManager()) {
         self.threshold = threshold
+        self.locationManager = locationManager
         super.init()
+        
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         self.locationManager.startUpdatingLocation()
     }
@@ -160,13 +167,6 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     }
     
     // MARK: - Private
-    
-    private lazy var locationManager: CLLocationManager = {
-        let locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        return locationManager
-    }()
     
     private func publishChangeWithResult(result: LocationResult) {
         observers.map { (observer) -> Void in

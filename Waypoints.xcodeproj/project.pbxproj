@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F71A58121AEAF6DC00EAA7C3 /* Waypoints.h in Headers */ = {isa = PBXBuildFile; fileRef = F7686A291AEAF3D900955C62 /* Waypoints.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F71A58131AEAF70600EAA7C3 /* Waypoints.h in Headers */ = {isa = PBXBuildFile; fileRef = F7686A291AEAF3D900955C62 /* Waypoints.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F729EAF11AEE947300100BA4 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7686A071AEAF33400955C62 /* LocationTracker.swift */; };
+		F729EAF21AEE956200100BA4 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7686A071AEAF33400955C62 /* LocationTracker.swift */; };
 		F7686A181AEAF34800955C62 /* Waypoints.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7686A0D1AEAF34800955C62 /* Waypoints.framework */; };
 		F7686A3B1AEAF44B00955C62 /* Waypoints.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7686A301AEAF44B00955C62 /* Waypoints.framework */; };
 		F7686A4B1AEAF51D00955C62 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7686A071AEAF33400955C62 /* LocationTracker.swift */; };
@@ -321,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7F14E9F1AEAFD5D00AD7F76 /* LocationTrackerTests.swift in Sources */,
+				F729EAF21AEE956200100BA4 /* LocationTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7F14EA01AEAFD6000AD7F76 /* LocationTrackerTests.swift in Sources */,
+				F729EAF11AEE947300100BA4 /* LocationTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
