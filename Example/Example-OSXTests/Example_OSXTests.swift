@@ -1,16 +1,16 @@
 //
-//  LocationTrackerTests.swift
-//  Waypoints
+//  Example_OSXTests.swift
+//  Example-OSXTests
 //
-//  Created by Andrew Shepard on 4/24/15.
+//  Created by Andrew Shepard on 4/28/15.
 //  Copyright (c) 2015 Andrew Shepard. All rights reserved.
 //
 
-import Foundation
-import CoreLocation
+import Cocoa
 import XCTest
+import CoreLocation
 
-class LocationTrackerTests: XCTestCase {
+class Example_OSXTests: XCTestCase {
     
     typealias LocationUpdate = (manager: CLLocationManager) -> Void
     
@@ -59,4 +59,5 @@ class LocationTrackerTests: XCTestCase {
     private var location: CLLocation {
         return CLLocation(latitude: 25.7877, longitude: -80.2241)
     }
+    
 }

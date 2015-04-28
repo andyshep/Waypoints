@@ -1,23 +1,22 @@
 //
 //  ViewController.swift
-//  LocationTracker-OSX
+//  Example-OSX
 //
-//  Created by Andrew Shepard on 3/16/15.
+//  Created by Andrew Shepard on 4/28/15.
 //  Copyright (c) 2015 Andrew Shepard. All rights reserved.
 //
 
 import Cocoa
-import Waypoints
 
 class ViewController: NSViewController {
-
+    
     @IBOutlet weak var locationLabel: NSTextField!
     
     let locationTracker = LocationTracker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         self.updateLocationLabel("Unknown")
@@ -33,13 +32,13 @@ class ViewController: NSViewController {
             }
         }
     }
-
+    
     override var representedObject: AnyObject? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
-
+    
     func updateLocationLabel(text: String) -> Void {
         self.locationLabel.stringValue = "Location: \(text)"
     }

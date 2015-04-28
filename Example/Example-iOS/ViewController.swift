@@ -1,21 +1,19 @@
 //
 //  ViewController.swift
-//  LocationTrackerExample
+//  Example-iOS
 //
-//  Created by Andrew Shepard on 3/15/15.
+//  Created by Andrew Shepard on 4/28/15.
 //  Copyright (c) 2015 Andrew Shepard. All rights reserved.
 //
 
 import UIKit
-import CoreLocation
-import Waypoints
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var locationLabel: UILabel!
     
     let locationTracker = LocationTracker(threshold: 10.0)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

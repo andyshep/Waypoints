@@ -1,5 +1,4 @@
-Waypoints [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-====
+#Waypoints
 
 Easy location tracking in Swift.
 
@@ -65,11 +64,7 @@ See the `Example` project for iOS and OS X demos.
 
 ##Installation
 
-To use Waypoints in your Xcode project via [Carthage](https://github.com/Carthage/Carthage), add the following to your `Cartfile`:
-
-    github "andyshep/Waypoints"
-
-Or clone the repo directly and copy `LocationTracker.swift` into your Xcode project.
+Clone the repo directly and copy `LocationTracker.swift` into your Xcode project.
 
 ##Configuration
 

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  LocationTrackerExample
+//  Example-iOS
 //
-//  Created by Andrew Shepard on 3/15/15.
+//  Created by Andrew Shepard on 4/28/15.
 //  Copyright (c) 2015 Andrew Shepard. All rights reserved.
 //
 
