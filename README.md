@@ -44,7 +44,7 @@ public enum Reason {
 }
 ```
 
-The `Location` type combines a `CLLocation` with metadata for the associated city, state, and neighborhood. Address infomation is obtained using `CLGeocoder`.
+The `Location` type combines a `CLLocation` with metadata for the associated city, state, and neighborhood. Address information is obtained using `CLGeocoder`.
 
 ```
 public struct Location {
