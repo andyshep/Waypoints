@@ -47,6 +47,11 @@ class Example_iOSTests: XCTestCase {
             case .Success(let location):
                 XCTAssertEqual(location.physical.coordinate.latitude, self.location.coordinate.latitude, "Latitude is wrong")
                 XCTAssertEqual(location.physical.coordinate.longitude, self.location.coordinate.longitude, "Longitude is wrong")
+                
+                XCTAssertEqual(location.city, "Miami", "City is wrong")
+                XCTAssertEqual(location.state, "FL", "State is wrong")
+                XCTAssertEqual(location.neighborhood, "Allapattah", "Neighborhood is wrong")
+                
                 expectation.fulfill()
             case .Failure:
                 XCTFail("Location should be valid")

@@ -142,17 +142,15 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
             if shouldUpdateWithLocation(currentLocation) {
                 CLGeocoder().reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) -> Void in
                     if let placemark = placemarks?.first as? CLPlacemark {
-                        if let city = placemark.locality {
-                            if let state = placemark.administrativeArea {
-                                if let neighborhood = placemark.subLocality {
-                                    let location = Location(location: currentLocation, city: city, state: state, neighborhood: neighborhood)
-                                    
-                                    let result = LocationResult.Success(location)
-                                    self.publishChangeWithResult(result)
-                                    self.lastResult = result
-                                }
-                            }
-                        }
+                        let city = placemark.locality ?? ""
+                        let state = placemark.administrativeArea ?? ""
+                        let neighborhood = placemark.subLocality ?? ""
+                        
+                        let location = Location(location: currentLocation, city: city, state: state, neighborhood: neighborhood)
+                        
+                        let result = LocationResult.Success(location)
+                        self.publishChangeWithResult(result)
+                        self.lastResult = result
                     }
                     else {
                         let result = LocationResult.Failure(Reason.Other(error))
