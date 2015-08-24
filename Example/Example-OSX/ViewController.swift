@@ -27,7 +27,7 @@ class ViewController: NSViewController {
                 let coordinate = location.physical.coordinate
                 let locationString = "\(coordinate.latitude), \(coordinate.longitude)"
                 self.updateLocationLabel(locationString)
-            case .Failure(let reason):
+            case .Failure:
                 self.updateLocationLabel("Failure")
             }
         }

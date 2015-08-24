@@ -81,7 +81,7 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     /**
         Initializes a new LocationTracker with the default minimum distance threshold of 0 meters.
     
-        :returns: LocationTracker with the default minimum distance threshold of 0 meters.
+        - returns: LocationTracker with the default minimum distance threshold of 0 meters.
     */
     public convenience override init() {
         self.init(threshold: 0.0)
@@ -90,9 +90,9 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     /**
         Initializes a new LocationTracker with the specified minimum distance threshold.
     
-        :param: threshold The minimum distance change in meters before a new location is published.
+        - parameter threshold: The minimum distance change in meters before a new location is published.
     
-        :returns: LocationTracker with the specified minimum distance threshold.
+        - returns: LocationTracker with the specified minimum distance threshold.
     */
     public init(threshold: Double, locationManager:CLLocationManager = CLLocationManager()) {
         self.threshold = threshold
@@ -110,7 +110,7 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     /**
         Adds a location change observer to execute whenever the location significantly changes.
     
-        :param: observer The callback function to execute when a location change occurs.
+        - parameter observer: The callback function to execute when a location change occurs.
     */
     public func addLocationChangeObserver(observer: Observer) -> Void {
         observers.append(observer)
@@ -118,7 +118,7 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     
     // MARK: - CLLocationManagerDelegate
     
-    public func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         #if os(iOS)
             switch status {
             case .AuthorizedWhenInUse:
@@ -131,17 +131,18 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
         #endif
     }
     
-    public func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    public func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         let result = LocationResult.Failure(Reason.Other(error))
         self.publishChangeWithResult(result)
         self.lastResult = result
     }
     
-    public func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    #if os(OSX)
+    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
         if let currentLocation = locations.first as? CLLocation {
             if shouldUpdateWithLocation(currentLocation) {
                 CLGeocoder().reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) -> Void in
-                    if let placemark = placemarks?.first as? CLPlacemark {
+                    if let placemark = placemarks?.first {
                         let city = placemark.locality ?? ""
                         let state = placemark.administrativeArea ?? ""
                         let neighborhood = placemark.subLocality ?? ""
@@ -152,7 +153,7 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
                         self.publishChangeWithResult(result)
                         self.lastResult = result
                     }
-                    else {
+                    else if let error = error {
                         let result = LocationResult.Failure(Reason.Other(error))
                         self.publishChangeWithResult(result)
                         self.lastResult = result
@@ -163,6 +164,35 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
             // location hasn't changed significantly
         }
     }
+    
+    #elseif os(iOS)
+    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let currentLocation = locations.first {
+            if shouldUpdateWithLocation(currentLocation) {
+                CLGeocoder().reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) -> Void in
+                    if let placemark = placemarks?.first {
+                        let city = placemark.locality ?? ""
+                        let state = placemark.administrativeArea ?? ""
+                        let neighborhood = placemark.subLocality ?? ""
+                        
+                        let location = Location(location: currentLocation, city: city, state: state, neighborhood: neighborhood)
+                        
+                        let result = LocationResult.Success(location)
+                        self.publishChangeWithResult(result)
+                        self.lastResult = result
+                    }
+                    else if let error = error {
+                        let result = LocationResult.Failure(Reason.Other(error))
+                        self.publishChangeWithResult(result)
+                        self.lastResult = result
+                    }
+                })
+            }
+            
+            // location hasn't changed significantly
+        }
+    }
+    #endif
     
     // MARK: - Private
     
