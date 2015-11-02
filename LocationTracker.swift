@@ -197,7 +197,7 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
     // MARK: - Private
     
     private func publishChangeWithResult(result: LocationResult) {
-        observers.map { (observer) -> Void in
+        let _ = observers.map { (observer) -> Void in
             observer(location: result)
         }
     }
