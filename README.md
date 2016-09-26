@@ -5,7 +5,7 @@ Easy location tracking in Swift.
 * Add multiple observers for a single location change.
 * Configure the minimum distance before a new location is published.
 * Supports reverse geocoding.
-* Target iOS or OS X.
+* Target iOS or macOS.
 
 ##Usage
 
@@ -22,25 +22,20 @@ Add a location change observer to an existing `LocationTracker` instance:
 ```
 locationTracker.addLocationChangeObserver { (result) -> () in
     switch result {
-    case .Success(let location):
+    case .success(let location):
         // handle new location
-    case .Failure(let reason):
+    case .failure(let reason):
         // handle failure
     }
 }
 ```
 
-The location is returned as a `LocationResult` type, representing either a `Location` or a `Reason` why the location could not be obtained.
+The location is returned as a `LocationResult` type, representing either the `Location` or an `Error` about why the location could not be obtained.
 
 ```
 public enum LocationResult {
-    case Success(Location)
-    case Failure(Reason)
-}
-
-public enum Reason {
-    case UnknownLocation
-    case Other(NSError)
+    case success(Location)
+    case failure(Error)
 }
 ```
 
@@ -59,8 +54,8 @@ See the `Example` project for iOS and OS X demos.
 
 ##Requirements
 
-* iOS 8.0 or Mac OS X 10.10
-* Xcode 6.3
+* Xcode 8
+* Swift 3
 
 ##Installation
 
