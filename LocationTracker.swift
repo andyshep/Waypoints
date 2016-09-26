@@ -12,70 +12,26 @@ import CoreLocation
 /**
     The LocationTracker class defines a mechanism for determining the current location and observing location changes.
 */
-public class LocationTracker: NSObject, CLLocationManagerDelegate {
+final class LocationTracker: NSObject {
     
     /// An alias for the location change observer type.
-    public typealias Observer = (location: LocationResult) -> ()
+    public typealias Observer = (_ location: LocationResult) -> ()
     
     /// The last location result received. Initially the location is unknown.
-    private var lastResult: LocationResult = .Failure(.UnknownLocation)
+    fileprivate var lastResult: LocationResult = .failure(.unknownLocation)
     
     /// The collection of location observers
-    private var observers: [Observer] = []
+    fileprivate var observers: [Observer] = []
     
     /// The minimum distance traveled before a location change is published.
-    private let threshold: Double
+    fileprivate let threshold: Double
     
     /// The internal location manager
-    private let locationManager: CLLocationManager
+    fileprivate let locationManager: CLLocationManager
     
     /// A `LocationResult` representing the current location.
-    var currentLocation: LocationResult {
+    public var currentLocation: LocationResult {
         return self.lastResult
-    }
-    
-    /**
-    Type representing either a Location or a Reason the location could not be determined.
-    
-    - Success: A successful result with a valid Location.
-    - Failure: An unsuccessful result with a Reason for failure.
-    */
-    public enum LocationResult {
-        case Success(Location)
-        case Failure(Reason)
-    }
-    
-    /**
-    Type representing either an unknown location or an NSError describing why the location failed.
-    
-    - UnknownLocation: The location is unknown because it has not been determined yet.
-    - Other: The NSError describing why the location could not be determined.
-    */
-    public enum Reason {
-        case UnknownLocation
-        case Other(NSError)
-    }
-    
-    /**
-    Location value representing a `CLLocation` and some local metadata.
-    
-    - physical: A CLLocation object for the current location.
-    - city: The city the location is in.
-    - state: The state the location is in.
-    - neighborhood: The neighborhood the location is in.
-    */
-    public struct Location: Equatable {
-        public let physical: CLLocation
-        public let city: String
-        public let state: String
-        public let neighborhood: String
-        
-        init(location physical: CLLocation, city: String, state: String, neighborhood: String) {
-            self.physical = physical
-            self.city = city
-            self.state = state
-            self.neighborhood = neighborhood
-        }
     }
     
     /**
@@ -105,23 +61,21 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
         self.locationManager.startUpdatingLocation()
     }
     
-    // MARK: - Public
-    
     /**
         Adds a location change observer to execute whenever the location significantly changes.
     
         - parameter observer: The callback function to execute when a location change occurs.
     */
-    public func addLocationChangeObserver(observer: Observer) -> Void {
+    final func addLocationChangeObserver(_ observer: @escaping Observer) -> Void {
         observers.append(observer)
     }
-    
-    // MARK: - CLLocationManagerDelegate
-    
-    public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+}
+
+extension LocationTracker: CLLocationManagerDelegate {
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         #if os(iOS)
             switch status {
-            case .AuthorizedWhenInUse:
+            case .authorizedWhenInUse:
                 locationManager.startUpdatingLocation()
             default:
                 locationManager.requestWhenInUseAuthorization()
@@ -131,44 +85,15 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
         #endif
     }
     
-    public func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        let result = LocationResult.Failure(Reason.Other(error))
-        self.publishChangeWithResult(result)
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        let result = LocationResult.failure(.other(error))
+        self.publishChange(with: result)
         self.lastResult = result
     }
     
-    #if os(OSX)
-    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-        if let currentLocation = locations.first as? CLLocation {
-            if shouldUpdateWithLocation(currentLocation) {
-                CLGeocoder().reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) -> Void in
-                    if let placemark = placemarks?.first {
-                        let city = placemark.locality ?? ""
-                        let state = placemark.administrativeArea ?? ""
-                        let neighborhood = placemark.subLocality ?? ""
-                        
-                        let location = Location(location: currentLocation, city: city, state: state, neighborhood: neighborhood)
-                        
-                        let result = LocationResult.Success(location)
-                        self.publishChangeWithResult(result)
-                        self.lastResult = result
-                    }
-                    else if let error = error {
-                        let result = LocationResult.Failure(Reason.Other(error))
-                        self.publishChangeWithResult(result)
-                        self.lastResult = result
-                    }
-                })
-            }
-            
-            // location hasn't changed significantly
-        }
-    }
-    
-    #elseif os(iOS)
-    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let currentLocation = locations.first {
-            if shouldUpdateWithLocation(currentLocation) {
+            if shouldUpdate(using: currentLocation) {
                 CLGeocoder().reverseGeocodeLocation(currentLocation, completionHandler: { (placemarks, error) -> Void in
                     if let placemark = placemarks?.first {
                         let city = placemark.locality ?? ""
@@ -177,13 +102,13 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
                         
                         let location = Location(location: currentLocation, city: city, state: state, neighborhood: neighborhood)
                         
-                        let result = LocationResult.Success(location)
-                        self.publishChangeWithResult(result)
+                        let result = LocationResult.success(location)
+                        self.publishChange(with: result)
                         self.lastResult = result
                     }
                     else if let error = error {
-                        let result = LocationResult.Failure(Reason.Other(error))
-                        self.publishChangeWithResult(result)
+                        let result = LocationResult.failure(.other(error))
+                        self.publishChange(with: result)
                         self.lastResult = result
                     }
                 })
@@ -192,26 +117,63 @@ public class LocationTracker: NSObject, CLLocationManagerDelegate {
             // location hasn't changed significantly
         }
     }
-    #endif
-    
-    // MARK: - Private
-    
-    private func publishChangeWithResult(result: LocationResult) {
+}
+
+extension LocationTracker {
+    fileprivate func publishChange(with result: LocationResult) {
         let _ = observers.map { (observer) -> Void in
-            observer(location: result)
+            observer(result)
         }
     }
     
-    private func shouldUpdateWithLocation(location: CLLocation) -> Bool {
+    fileprivate func shouldUpdate(using location: CLLocation) -> Bool {
         switch lastResult {
-        case .Success(let loc):
-            return location.distanceFromLocation(loc.physical) > threshold
-        case .Failure:
+        case .success(let loc):
+            return location.distance(from: loc.physical) > threshold
+        case .failure:
             return true
         }
     }
 }
 
-public func ==(lhs: LocationTracker.Location, rhs: LocationTracker.Location) -> Bool {
+/**
+ Type representing either a Location or a Reason the location could not be determined.
+ 
+ - Success: A successful result with a valid Location.
+ - Failure: An unsuccessful result with a Error for failure.
+ */
+public enum LocationResult {
+    case success(Location)
+    case failure(LocationError)
+}
+
+public enum LocationError {
+    case unknownLocation
+    case other(Error)
+}
+
+/**
+ Location value representing a `CLLocation` and some local metadata.
+ 
+ - physical: A CLLocation object for the current location.
+ - city: The city the location is in.
+ - state: The state the location is in.
+ - neighborhood: The neighborhood the location is in.
+ */
+public struct Location: Equatable {
+    public let physical: CLLocation
+    public let city: String
+    public let state: String
+    public let neighborhood: String
+    
+    init(location physical: CLLocation, city: String, state: String, neighborhood: String) {
+        self.physical = physical
+        self.city = city
+        self.state = state
+        self.neighborhood = neighborhood
+    }
+}
+
+public func ==(lhs: Location, rhs: Location) -> Bool {
     return lhs.physical == rhs.physical
 }

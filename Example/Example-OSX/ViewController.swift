@@ -23,23 +23,23 @@ class ViewController: NSViewController {
         
         self.locationTracker.addLocationChangeObserver { (result) -> () in
             switch result {
-            case .Success(let location):
+            case .success(let location):
                 let coordinate = location.physical.coordinate
                 let locationString = "\(coordinate.latitude), \(coordinate.longitude)"
                 self.updateLocationLabel(locationString)
-            case .Failure:
+            case .failure:
                 self.updateLocationLabel("Failure")
             }
         }
     }
     
-    override var representedObject: AnyObject? {
+    override var representedObject: Any? {
         didSet {
             // Update the view, if already loaded.
         }
     }
     
-    func updateLocationLabel(text: String) -> Void {
+    func updateLocationLabel(_ text: String) -> Void {
         self.locationLabel.stringValue = "Location: \(text)"
     }
 }

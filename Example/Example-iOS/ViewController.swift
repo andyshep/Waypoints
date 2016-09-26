@@ -18,16 +18,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.updateLocationLabel("Unknown")
+        self.updateLocationLabel(withText: "Unknown")
         
         self.locationTracker.addLocationChangeObserver { (result) -> () in
             switch result {
-            case .Success(let location):
+            case .success(let location):
                 let coordinate = location.physical.coordinate
                 let locationString = "\(coordinate.latitude), \(coordinate.longitude)"
-                self.updateLocationLabel(locationString)
-            case .Failure:
-                self.updateLocationLabel("Failure")
+                self.updateLocationLabel(withText: locationString)
+            case .failure:
+                self.updateLocationLabel(withText: "Failure")
             }
         }
     }
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func updateLocationLabel(text: String) -> Void {
+    func updateLocationLabel(withText text: String) -> Void {
         self.locationLabel.text = "Location: \(text)"
     }
 }
