@@ -2,3 +2,6 @@
 */*.xcodeproj/xcuserdata/*
 */*.xcodeproj/project.xcworkspace/
 build/*
+
+.swiftpm
+Package.resolved
