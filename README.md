@@ -1,4 +1,4 @@
-#Waypoints
+# Waypoints
 
 Easy location tracking in Swift.
 
@@ -7,7 +7,7 @@ Easy location tracking in Swift.
 * Supports reverse geocoding.
 * Target iOS or macOS.
 
-##Usage
+## Usage
 
 Create a `LocationTracker` instance with the default minimum distance threshold of zero meters:
 
@@ -52,16 +52,16 @@ public struct Location {
 
 See the `Example` project for iOS and OS X demos.
 
-##Requirements
+## Requirements
 
 * Xcode 8
 * Swift 3
 
-##Installation
+## Installation
 
 Clone the repo directly and copy `LocationTracker.swift` into your Xcode project.
 
-##Configuration
+## Configuration
 
 Starting in iOS 8, the privacy settings require you to [specify *why* the location is needed](http://stackoverflow.com/a/24063578) before the app is authorized to use it. Add an entry into the `Info.plist` for `NSLocationAlwaysUsageDescription` or `NSLocationWhenInUseUsageDescription`.
 
