@@ -51,7 +51,7 @@ public final class LocationTracker: LocationTracking {
     
     private var cancelables: [AnyCancellable] = []
     
-    public init(locationManager makeLocationManager: LocationManagerMaking,
+    public init(locationManager makeLocationManager: LocationManagerMaking = { CLLocationManager() },
                 geocoder: GeocoderProviding = CLGeocoder(),
                 notificationCenter: NotificationCentering = NotificationCenter.default) {
         self.locationManager = makeLocationManager()
@@ -70,13 +70,6 @@ public final class LocationTracker: LocationTracking {
     }
     
     // MARK: Private
-    
-    private static func makeLocationManger() -> CLLocationManager {
-        let locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-        locationManager.distanceFilter = CLLocationDistance(3000.0)
-        return locationManager
-    }
     
     private func watchForApplicationLifecycleChanges() {
         #if os(iOS)
