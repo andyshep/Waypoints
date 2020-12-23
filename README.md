@@ -1,5 +1,8 @@
 # Waypoints
 
+![Swift 5.0](https://img.shields.io/badge/swift-5.0-orange.svg)
+![Platform](https://img.shields.io/badge/platform-ios%20%7C%20macos-lightgrey.svg)
+
 Easy location tracking in Swift.
 
 * Add multiple observers for a single location change.
@@ -9,53 +12,43 @@ Easy location tracking in Swift.
 
 ## Usage
 
-Create a `LocationTracker` instance with the default minimum distance threshold of zero meters:
+Create a `LocationTracker` instance:
 
 	let locationTracker = LocationTracker()
 
-Create a `LocationTracker` with a minimum distance threshold of 50 meters:
-
-	let locationTracker = LocationTracker(threshold: 50.0)
-
-Add a location change observer to an existing `LocationTracker` instance:
+Subscribe to location changes:
 
 ```
-locationTracker.addLocationChangeObserver { (result) -> () in
-    switch result {
-    case .success(let location):
-        // handle new location
-    case .failure(let reason):
-        // handle failure
+locationTracker
+    .locationUpdatePublisher
+    .sink { [weak self] (result) in
+        switch result {
+        case .success(let location):
+            // handle new location
+        case .failure(let error):
+            // handle error
+        }
     }
-}
+    .store(in: &cancellables)
 ```
 
-The location is returned as a `LocationResult` type, representing either the `Location` or an `Error` about why the location could not be obtained.
+The location is returned as a `Result<Location, Error>` type, representing either the `Location` or an `Error` about why the location could not be obtained.
 
-```
-public enum LocationResult {
-    case success(Location)
-    case failure(Error)
-}
-```
-
-The `Location` type combines a `CLLocation` with metadata for the associated city, state, and neighborhood. Address information is obtained using `CLGeocoder`.
+The `Location` type combines a `CLLocation` with metadata for the associated city and state. Address information is obtained using `CLGeocoder`.
 
 ```
 public struct Location {
     let physical: CLLocation
     let city: String
     let state: String
-    let neighborhood: String
 }
 ```
 
-See the `Example` project for iOS and OS X demos.
-
 ## Requirements
 
-* Xcode 8
-* Swift 3
+* Xcode 12
+* Swift 5
+* iOS 13, macOS 11
 
 ## Installation
 
