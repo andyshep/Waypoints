@@ -18,6 +18,8 @@ public protocol LocationTracking {
 /// The LocationTracker class defines a mechanism for determining the current location and observing location changes.
 public final class LocationTracker: LocationTracking {
     
+    // MARK: Dependencies
+    
     private let locationManager: LocationManaging
     private let geocoder: GeocoderProviding
     private let notificationCenter: NotificationCentering
@@ -51,15 +53,24 @@ public final class LocationTracker: LocationTracking {
     
     private var cancelables: [AnyCancellable] = []
     
+    /// Creates a new instance of a `LocationTracker`
+    /// - Parameters:
+    ///   - makeLocationManager: Factory function that returns a `CLLocationManager`
+    ///   - geocoder: A geocoder object; defaults to `CLGeocoder`.
+    ///   - notificationCenter: A notification center; defaults to `NotificationCenter.default`.
+    ///   - queue: A queue for observing notication changes. Defaults to `DispatchQueue.main`
+    ///   - interval: An interval to wait before receiving location updates. Defaults to 60 seconds.
     public init(locationManager makeLocationManager: LocationManagerMaking = { CLLocationManager() },
                 geocoder: GeocoderProviding = CLGeocoder(),
-                notificationCenter: NotificationCentering = NotificationCenter.default) {
+                notificationCenter: NotificationCentering = NotificationCenter.default,
+                queue: DispatchQueue = DispatchQueue.main,
+                updateInterval interval : TimeInterval = 60.0) {
         self.locationManager = makeLocationManager()
         self.geocoder = geocoder
         self.notificationCenter = notificationCenter
         
         watchForApplicationLifecycleChanges()
-        watchForLocationChanges(interval: 60.0, scheduler: DispatchQueue.main)
+        watchForLocationChanges(interval: interval, scheduler: queue)
         
         locationManager.requestWhenInUseAuthorization()
     }
@@ -104,10 +115,14 @@ public final class LocationTracker: LocationTracking {
             }
             .store(in: &cancelables)
         
-        // then grab a new location every 60 seconds
+        // then grab a new location every `interval` seconds
         locationPublisher
             .dropFirst()
-            .throttle(for: 60.0, scheduler: scheduler, latest: true)
+            .throttle(
+                for: DispatchQueue.SchedulerTimeType.Stride.init(floatLiteral: interval),
+                scheduler: scheduler,
+                latest: true
+            )
             .sink { [weak self] (result) in
                 self?.updateLocationSubject(with: result)
             }
