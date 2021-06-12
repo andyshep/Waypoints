@@ -103,7 +103,7 @@ class LocationTrackerTests: XCTestCase {
     
     #if os(iOS)
     func testStopsLocationUpdatesOnResignActive() {
-        sut.locationUpdateEvent
+        sut.locationUpdatePublisher
             .sink { _ in }
             .store(in: &cancellables)
 
@@ -114,7 +114,7 @@ class LocationTrackerTests: XCTestCase {
     }
 
     func testStartsLocationUpdatesOnBecomeActive() {
-        sut.locationUpdateEvent
+        sut.locationUpdatePublisher
             .sink { _ in }
             .store(in: &cancellables)
 
